@@ -15,6 +15,9 @@
          <li>{{ item.title }}</li>
         {% endfor %}
       </ul>
+      {% for items in items %}
+      <li>{{ item.id }} - {{ item.title }} - {{ item.status }}</li>
+       {% endfor %}
     </div>
   </div>
 {% endblock %}
