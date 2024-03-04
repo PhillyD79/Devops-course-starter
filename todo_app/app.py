@@ -10,3 +10,9 @@ app.config.from_object(Config())
 def index():
     items = get_items()
     return render_template("index.html", template_items = items)
+
+@app.route('/add-todo' , methods=["POST"])
+def add_todo():
+    new_todo_title = request.form.get ("title")
+    add_item(new_todo_title)
+    return redirect('/')
