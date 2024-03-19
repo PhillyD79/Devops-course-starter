@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request , redirect
 from todo_app.flask_config import Config
-from todo_app.data.session_items import get_items, add_item
+from todo_app.data.session_items import get_items
+from todo_app.data.trello_item import add_items
 
+import os
 app = Flask(__name__)
 app.config.from_object(Config())
 
+print(os.getenv("TRELLO_API_KEY"))
 
 @app.route('/')
 def index():
