@@ -9,7 +9,7 @@ def add_items(title):
         "token": os.getenv("TRELLO_API_TOKEN"),
         "idList": os.getenv("TRELLO_TODO_LIST_ID"),
         "name": title
-}
+    }
 
 
     response = requests.post(reqUrl, params = query_params)
@@ -43,6 +43,17 @@ def get_items():
             items.append(trello_card)
 
     return items
+
+def complete_item(item_id):
+    reqUrl = f"https://api.trello.com/1/cards/{item_id}"
+
+    query_params = {
+        "key": os.getenv("TRELLO_API_KEY"),
+        "token": os.getenv("TRELLO_API_TOKEN"),
+        "idList": os.getenv("TRELLO_DONE_LIST_ID"),
+    }
+
+    response = requests.put(reqUrl, params = query_params)
+
+    print(response.text)
        
-
-
