@@ -12,7 +12,8 @@ print(os.getenv("TRELLO_API_KEY"))
 @app.route('/')
 def index():
     items = get_items()
-    return render_template("index.html", template_items = items)
+    view_model = ViewModel(items)
+    return render_template("index.html", view_model = view_model)
 
 @app.route('/add-todo' , methods=["POST"])
 def add_todo():
