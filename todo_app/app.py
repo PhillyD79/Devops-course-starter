@@ -3,9 +3,9 @@ from todo_app.flask_config import Config
 
 from todo_app.data.trello_item import add_items, get_items, complete_item
 
-import os
-app = Flask(__name__)
-app.config.from_object(Config())
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config())
 
 print(os.getenv("TRELLO_API_KEY"))
 
@@ -26,3 +26,4 @@ def complete_todo(todo_id):
     complete_item(todo_id)
     return redirect('/')
 
+return app
