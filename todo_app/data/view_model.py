@@ -1,5 +1,7 @@
+from todo_app.data.item import Item
+
 class ViewModel:
-    def __init__(self, items: list[item]):
+    def __init__(self, items: list[Item]):
         self._items = items
  
     @property
@@ -11,21 +13,27 @@ class ViewModel:
         output = []
 
         for item in self._items:
-            if item.status == "To Do"
+            if item.status == "To do":
                 output.append(item)
+        
+        return output
 
     @property
     def doing_items(self):
         output = []
 
         for item in self._items:
-            if item.status == "Doing"
+            if item.status == "Doing":
                 output.append(item)
 
+        return output
+
     @property
-    def done_items(self): -> list[Item]:
+    def done_items(self) -> list[Item]:
         output = []
 
         for item in self._items:
-            if item.status == "Done"
+            if item.status == "Done":
                 output.append(item)
+
+        return output
