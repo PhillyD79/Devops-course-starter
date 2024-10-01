@@ -21,14 +21,16 @@ def test_index_page(monkeypatch, client):
 
         response = client.get('/')
 
- class StubResponse():
-        def __init__(self, fake_response_data):
-                self.fake_response_data = fake_response_data
+        assert response.status_code ==200
+        assert 'Test card' in response.data.decode()
+class StubResponse():
+    def __init__(self, fake_response_data):
+        self.fake_response_data = fake_response_data
 
-        def raise_for_status():
-            pass
+    def raise_for_status(self):
+        pass
 
-        def json(self):
+    def json(self):
                 return self.fake_response_data
 
 def stub(url, params={}):
