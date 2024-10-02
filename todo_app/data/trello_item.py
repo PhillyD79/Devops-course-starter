@@ -27,7 +27,7 @@ def get_items():
         "key": os.getenv("TRELLO_API_KEY"),
         "token": os.getenv("TRELLO_API_TOKEN"),
         "cards": "open"
-}
+    }
 
 
     response = requests.get(reqUrl, params = query_params)
