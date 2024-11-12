@@ -44,7 +44,7 @@ You need a Trello account for this application. Once you have setup an account a
 
 Furthermore, you will need to add the board id and the "Todo" and "Done" column/list ids (i.e. you need to choose which you're using and which columns count as "Todo" and "Done" for item statuses).
 
-## Running the App
+## Running the App locally 
 
 Once the all dependencies have been installed, start the Flask app in development mode within the Poetry environment by running:
 ```bash
@@ -70,3 +70,25 @@ To run the tests for the codebase run the following command:
 poetry run pytest
 
 (please make sure you have run 'poetry install' beforehand to instal pytest)
+
+## Deploiyng the app via ansible 
+TO deploy the application via ansible copy the 'ansible' folder to the host node, update the inventory file (to include the control nodes you'd like to deploy to)and run the following command:
+ansible-playbook playbook.yaml -i inventory.yaml
+
+Please note you will need to have set up passwordless SSH access from the host to each of the managed nodes
+
+## building and running the app via docker
+To build the container for local development, please run 
+~~~bash
+docker build --tag todo-app:dev --target development .
+~~~
+to run the container for local development please run
+~~~
+docker run --publish 8000:5000 -it --env-file .env   --mount "type=bind,source=$(pwd)/todo_app,target=/app/todo_app" todo-app:dev
+~~~
+
+For the production container the build and run commands are:-
+~~~ bash
+docker build --tag todo-app:prod --target production .
+
+docker run --publish 8000:5000 -it --env-file .env   --mount "type=bind,source=$(pwd)/todo_app,target=/app/todo_app" todo-app:prod
