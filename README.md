@@ -92,3 +92,6 @@ For the production container the build and run commands are:-
 docker build --tag todo-app:prod --target production .
 
 docker run --publish 8000:5000 -it --env-file .env   --mount "type=bind,source=$(pwd)/todo_app,target=/app/todo_app" todo-app:prod
+
+ ##diagrams
+ Architecture diagrams can be found in the diagram subfolder, thney were built using app.diagrams. net (app.diagrams.net) you can use the .drawio file to edit these diagrams
