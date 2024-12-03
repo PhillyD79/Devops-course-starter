@@ -71,6 +71,13 @@ poetry run pytest
 
 (please make sure you have run 'poetry install' beforehand to instal pytest)
 
+if instead yo'd like to run your test via docker please run the follwoing:
+----
+----
+dockerbuild --tag todo-app:test --target test .
+docker run todo-app:test
+~~~
+
 ## Deploiyng the app via ansible 
 TO deploy the application via ansible copy the 'ansible' folder to the host node, update the inventory file (to include the control nodes you'd like to deploy to)and run the following command:
 ansible-playbook playbook.yaml -i inventory.yaml
